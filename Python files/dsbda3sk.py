@@ -30,21 +30,14 @@ column_names=["sepal_length","sepal_width", "petal_length", "petal_width","class
 df  = pd.read_csv("https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data", names = column_names)
 
 
-# Group data by species
-grouped_species = df.groupby('class')
-print("grouped data\n",grouped_species.head())
+print("first few lines of dataset\n", df.head())
 
-# Calculate statistics for each species
-# for species, data in grouped_species:
-#     print("Species:", species)
-#     print("-------------------------------")
-#     print("Percentile:")
-#     print(data.describe(percentiles=[.25, .50, .75]))
-#     print("\nMean:")
-#     print(data.mean())
-#     print("\nStandard Deviation:")
-#     print(data.std())
-#     print("\n-------------------------------\n")
+setosa_stats = df[df["class"] == "Iris-setosa"].describe()
+print("Statastical data for setosa species\n", setosa_stats)
 
-grouped_species["sepal_length"].describe()
+versicolor_stats = df[df["class"] == "Iris-versicolor"].describe()
+print("Statastical data for versicolor species\n", versicolor_stats)
+
+virginica_stats = df[df["class"] == "Iris-virginica"].describe()
+print("Statastical data for verginica species\n", virginica_stats)
 
